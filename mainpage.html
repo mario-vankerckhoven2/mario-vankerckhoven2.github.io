@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <!--CDN links for TweenLite, CSSPlugin, and EasePack-->
+  <!--CDN links for jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <!--CDN links for TweenLite, CSSPlugin, and EasePack-->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/plugins/CSSPlugin.min.js"></script>
@@ -16,11 +16,11 @@
 
 
 
-<div class="witblo" >
+<div id="witblo" >
 <img src="WBC1.gif"  style="max-width:100%;max-height:100%;">
 </div>
 
-<div class="virus" >
+<div id="virus" >
 <img src="virus.gif"  style="max-width:100%;max-height:100%;">
 </div>
 
@@ -28,19 +28,19 @@
 </div>
 
 <div class= "controldiv">
-<button  id ="but1" onclick="">
+<button  id ="but1" onclick="WBComhoog()">
   <img src="pijlboven.png"  style="max-width:100%;max-height:100%;">
 </button>
 
-<button id ="but2" onclick="">
+<button id ="but2" onclick="WBComlaag()">
 <img src="pijlonder.png"  style="max-width:100%;max-height:100%;">
 </button>
 
-<button id = "but3" onclick="">
+<button id = "but3" onclick="WBCnaarrechts()">
 <img src="pijlrechts.png"  style="max-width:100%;max-height:100%;">
 </button>
 
-<button id ="but4" onclick="">
+<button id ="but4" onclick="WBCnaarlinks()">
 <img src="pijllinks.png"  style="max-width:100%;max-height:100%;">
 </button>
 </div>
@@ -51,9 +51,36 @@
 
 </html>
 
+
+
 <script>
 
+
+
+
+function WBComhoog() {
+TweenLite.to("#witblo", 2, {top:"50", ease:Power2.easeInOut});
+
+}
+
+function WBComlaag() {
+TweenLite.to("#witblo", 2, {top:"280", ease:Power2.easeInOut});
+}
+
+function WBCnaarlinks() {
+TweenLite.to("#witblo", 2, {left:"100", ease:Power2.easeInOut});
+}
+
+function WBCnaarrechts() {
+TweenLite.to("#witblo", 2, {left:"400", ease:Power2.easeInOut});
+}
+
+
 </script>
+
+
+
+
 <style>
 
 .controldiv > button {
@@ -89,12 +116,13 @@ height: 300px;
 background-color: red;
 }
 
-.witblo{
+#witblo{
 top: 250px;
 left: 400px;
+
 }
 
-.virus{
+#virus{
 left: 100px;
 
 }
