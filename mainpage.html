@@ -57,22 +57,41 @@
 
 
 
-
 function WBComhoog() {
-TweenLite.to("#witblo", 2, {top:"-=35", ease:Power2.easeInOut});
-
+var top = $("#witblo").offset().top;
+if (top > 60)
+{
+  TweenLite.to("#witblo", 2, {top:"-=35", ease:Power2.easeInOut});
 }
+}
+
 
 function WBComlaag() {
+var top = $("#witblo").offset().top;
+if (top <265)
+{
 TweenLite.to("#witblo", 2, {top:"+=35", ease:Power2.easeInOut});
 }
-
-function WBCnaarlinks() {
-TweenLite.to("#witblo", 2, {left:"-=35", ease:Power2.easeInOut});
 }
 
+
+
+function WBCnaarlinks() {
+var left = $("#witblo").offset().left;
+if (left > 45)
+{
+TweenLite.to("#witblo", 2, {left:"-=35", ease:Power2.easeInOut});
+}
+}
+
+
+
 function WBCnaarrechts() {
+var left = $("#witblo").offset().left;
+if (left < 430)
+{
 TweenLite.to("#witblo", 2, {left:"+=35", ease:Power2.easeInOut});
+}
 }
 
 
