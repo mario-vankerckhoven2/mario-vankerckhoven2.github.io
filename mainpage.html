@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <title>Blood Invaders</title>
   <!--CDN links for jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <!--CDN links for TweenLite, CSSPlugin, and EasePack-->
@@ -12,9 +13,11 @@
 
 <!--style = "background-image: url(WBC1.gif);"-->
 <body>
+
+<h1 id="bodytitel">Blood Invaders</h1>
+
+
 <div id="speelveld" style="background-image: url(achtergrond.jpg);" >
-
-
 
 <div id="witblo" >
 <img src="WBC1.gif"  style="max-width:100%;max-height:100%;">
@@ -24,10 +27,11 @@
 <img src="virus.gif"  style="max-width:100%;max-height:100%;">
 </div>
 
-
 </div>
 
-<div class= "controldiv">
+
+<div id= "controldiv">
+
 <button  id ="but1" onclick="WBComhoog()">
   <img src="pijlboven.png"  style="max-width:100%;max-height:100%;">
 </button>
@@ -43,32 +47,38 @@
 <button id ="but4" onclick="WBCnaarlinks()">
 <img src="pijllinks.png"  style="max-width:100%;max-height:100%;">
 </button>
+
 </div>
+
+<div id ="intro">
+  <p> Welcome to Blood Invaders !</p>
+  <br></br>
+  <p><b>Jou doel :</b></p>
+  <p> Dood het virus door de witte</p>
+  <p> bloedcel het te helpen vinden !</p>
+  <br></br>
+  <p><b>Controls:</b></p>
+  <p> Bestuur de witte bloedcel d.m.v.</p>
+  <p> pijltjestoetsen of de buttons</p>
+  <p> </p>
+</div>
+
+<div id ="scoreTrivia">
+  <p>Killing your first virus might trigger something!</p>
+</div>
+
+
 <p>Colliding? <span id="result">false</span>
+
+
 </body>
-
-
-
 </html>
 
 
-
 <script>
-/*
-var admin = prompt("Please enter your name, admin will provide test cheat","random");
-if (admin == "admin")
-{
-    var verify = prompt("enter password since you are an admin.", "test");
-    if (verify == "troll")
-    {
-        $(function() {
-        $( "#witblo" ).draggable();
-        $( "#virus" ).draggable();
-        });
-    }
-}
-*/
 
+var totalkills = 0 ;
+var LoginTijd = Date.now();
 
 
 // autochecker voor collisions tussen virus en witte bloedcel
@@ -87,22 +97,59 @@ function collision($div1, $div2) {
   var r2 = x2 + w2;
 
   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2){
-  return false;
+    return false;
   }
   else {
 
   var newVirusHeight = Math.floor(Math.random() *  270);
   var newVirusWidth = Math.floor(Math.random()* 420);
 /*    alert("you got him!  New Virus is invading, prepare for interception!"); */
-		
+
 		var left = $("#virus").offset().left;
 		if (left < 430)
 		{
 		TweenLite.to("#virus", 0.25, {left:newVirusWidth, ease:Power2.easeInOut});
 		TweenLite.to("#virus", 0.25, {top:newVirusHeight, ease:Power2.easeInOut});
 		}
-	
-	return true;
+
+    totalkills++;
+    var huidigeTijd = Date.now();
+    var speeltijd = (huidigeTijd - LoginTijd);
+    var seconden  = Math.floor(speeltijd/1000);
+
+
+    $( "#scoreTrivia" ).html( "<p><b>You have killed a total of "+totalkills+" virusses</b></p>" );
+
+    if (totalkills > 9)
+    {
+      $( "#scoreTrivia").append("<p id='doubleDigits'> Double Digits!!!!!</p>");
+    }
+    $( "#scoreTrivia").append("<br></br>");
+    $( "#scoreTrivia").append("<b>You have been killing virusses for:</b>");
+    $( "#scoreTrivia").append("<br></br>");
+
+    if (seconden > 59)  {
+        if (seconden > 119)  {
+
+            var minuten = Math.floor(seconden / 60);
+            seconden = seconden - (minuten*60);
+            $( "#scoreTrivia").append("<b>"+minuten+" minuten en "+seconden+" seconden</b>");
+
+        }
+        else {
+
+            var minuten = Math.floor(seconden / 60);
+            seconden = seconden - (minuten*60);
+            $( "#scoreTrivia").append("<b>"+minuten+" minuut en "+seconden+" seconden</b>");
+
+        }
+    }
+    else {
+
+          $( "#scoreTrivia").append("<b>"+seconden+" seconden</b>");
+    }
+
+	   return true;
        }
 }
 
@@ -110,7 +157,7 @@ window.setInterval(function() {
 $('#result').text(collision($('#witblo'), $('#virus')));
 }, 200);
 
-
+// AI voor virusbewegingen
 
 
  // Bewegingscontrollers voor witte bloedcel
@@ -146,69 +193,119 @@ TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
 }
 }
 
+ // Arrow keys added for keyboard fans
+ $(document).keydown(function(e) {
+    switch(e.which) {
+        case 37: // naarlinks
+        WBCnaarlinks();
+        break;
 
+        case 38: // naarboven
+        WBComhoog();
+        break;
+
+        case 39: // naarrechts
+        WBCnaarrechts();
+        break;
+
+        case 40: //naaronder
+        WBComlaag();
+        break;
+
+        default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+});
 </script>
 <style>
 
+#doubleDigits{
+  text-decoration: underline;
+  font-size: 20px;
+  font-family: Impact;
+}
+
+#intro{
+  position: absolute;
+  left: 630px;
+  top: 90px;
+
+}
+
+#bodytitel{
+    position: absolute;
+    left: 650px;
+
+}
+
+#scoreTrivia{
+    position: absolute;
+    left: 930px;
+    top: 152px;
+
+}
 
 #virus{
-left: 100px;
-top: 61px;
+    left: 100px;
+    top: 61px;
     position: absolute;
     font-size: 50px;
     width: 40px;
     height: 60px;
 	}
 
-	
-.controldiv > button {
+#controldiv{
+
+}
+
+#controldiv > button {
 
     position: absolute;
     font-size: 20px;
     width: 100px;
     height: 100px;
 }
+
 #but1 {
-  left : 200px;
+    left : 200px;
 }
 
 #but2 {
-left: 200px;
-top: 540px;
+    left: 200px;
+    top: 540px;
 }
 
 #but3 {
-top: 440px;
-left: 300px;
+    top: 440px;
+    left: 300px;
 }
 
 #but4 {
-top: 440px;
-left: 100px;
+    top: 440px;
+    left: 100px;
 }
 
 
 #speelveld {
-width: 477px;
-height: 300px;
-background-color: red;
+    width: 477px;
+    height: 300px;
+    background-color: red;
+    display: inline-block;
 }
 
 #witblo{
-top: 250px;
-left: 400px;
-
+    top: 250px;
+    left: 400px;
     position: absolute;
     font-size: 50px;
     width: 60px;
     height: 60px;
-
 }
 
 
 body {
     padding: 30px;
-    background-color: blue;
+    background-color: white;
     color: #444;
     font-family: Arial, sans-serif;
 }
@@ -216,7 +313,7 @@ body {
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
-	
+
 }
 
 #area{
@@ -231,5 +328,3 @@ p {
 }
 
 </style>
-<script>
-</script>
