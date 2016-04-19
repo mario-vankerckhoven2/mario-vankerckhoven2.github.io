@@ -94,7 +94,15 @@ function collision($div1, $div2) {
   var newVirusHeight = Math.floor(Math.random() *  270);
   var newVirusWidth = Math.floor(Math.random()* 420);
 /*    alert("you got him!  New Virus is invading, prepare for interception!"); */
-  return true;
+		
+		var left = $("#virus").offset().left;
+		if (left < 430)
+		{
+		TweenLite.to("#virus", 0.25, {left:newVirusWidth, ease:Power2.easeInOut});
+		TweenLite.to("#virus", 0.25, {top:newVirusHeight, ease:Power2.easeInOut});
+		}
+	
+	return true;
        }
 }
 
@@ -110,7 +118,7 @@ function WBComhoog() {
 var top = $("#witblo").offset().top;
 if (top > 60)
 {
-  TweenLite.to("#witblo", 2, {top:"-=35", ease:Power2.easeInOut});
+  TweenLite.to("#witblo", 0.25, {top:"-=35px", ease:Power2.easeInOut});
 }
 }
 
@@ -118,26 +126,23 @@ function WBComlaag() {
 var top = $("#witblo").offset().top;
 if (top <265)
 {
-TweenLite.to("#witblo", 2, {top:"+=35", ease:Power2.easeInOut});
+TweenLite.to("#witblo", 0.25, {top:"+=35", ease:Power2.easeInOut});
 }
-
 }
-
 
 function WBCnaarlinks() {
 var left = $("#witblo").offset().left;
 if (left > 45)
 {
-TweenLite.to("#witblo", 2, {left:"-=35", ease:Power2.easeInOut});
+TweenLite.to("#witblo", 0.25, {left:"-=35", ease:Power2.easeInOut});
 }
 }
-
 
 function WBCnaarrechts() {
 var left = $("#witblo").offset().left;
 if (left < 430)
 {
-TweenLite.to("#witblo", 2, {left:"+=35", ease:Power2.easeInOut});
+TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
 }
 }
 
@@ -145,6 +150,17 @@ TweenLite.to("#witblo", 2, {left:"+=35", ease:Power2.easeInOut});
 </script>
 <style>
 
+
+#virus{
+left: 100px;
+top: 61px;
+    position: absolute;
+    font-size: 50px;
+    width: 40px;
+    height: 60px;
+	}
+
+	
 .controldiv > button {
 
     position: absolute;
@@ -182,12 +198,13 @@ background-color: red;
 top: 250px;
 left: 400px;
 
+    position: absolute;
+    font-size: 50px;
+    width: 60px;
+    height: 60px;
+
 }
 
-#virus{
-left: 100px;
-
-}
 
 body {
     padding: 30px;
@@ -199,6 +216,7 @@ body {
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
+	
 }
 
 #area{
@@ -207,26 +225,6 @@ h1 {
     height: 400px;
     position: relative;
 }
-
-#speelveld > div {
-
-    position: absolute;
-    font-size: 50px;
-    width: 60px;
-    height: 60px;
-}
-
-#box0 {
-    background-color: rgba(255, 0, 0, 0.5) !important;
-    top: 150px;
-    left: 150px;
-}
-
-#box1 {
-    top: 260px;
-    left: 50px;
-}
-
 
 p {
     margin: 5px 0;
