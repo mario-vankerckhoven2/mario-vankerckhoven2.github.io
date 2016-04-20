@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -103,7 +105,7 @@ function collision($div1, $div2) {
 
   var newVirusHeight = Math.floor(Math.random() *  270);
   var newVirusWidth = Math.floor(Math.random()* 420);
-/*    alert("you got him!  New Virus is invading, prepare for interception!"); */
+
 
 		var left = $("#virus").offset().left;
 		if (left < 430)
@@ -112,7 +114,8 @@ function collision($div1, $div2) {
 		TweenLite.to("#virus", 0.25, {top:newVirusHeight, ease:Power2.easeInOut});
 		}
 
-    totalkills++;
+      totalkills = totalkills +1;
+
     var huidigeTijd = Date.now();
     var speeltijd = (huidigeTijd - LoginTijd);
     var seconden  = Math.floor(speeltijd/1000);
@@ -153,27 +156,67 @@ function collision($div1, $div2) {
        }
 }
 
+
+
+
+
+
+
+// AI voor virusbewegingen
+function VirusAI() {
+var richtingVirus = Math.floor(Math.random()*5);
+
+if (richtingVirus==1){
+
+  var top = $("#virus").offset().top;
+  if (top > 60)
+  {
+  TweenLite.to("#virus", 0.2, {top:"-=35px", ease:Power2.easeInOut});
+  }
+
+}
+else if (richtingVirus== 2) {
+
+  var top = $("#virus").offset().top;
+  if (top <265)
+  {
+  TweenLite.to("#virus", 0.2, {top:"+=35", ease:Power2.easeInOut});
+  }
+
+}
+else if (richtingVirus==3) {
+
+  var left = $("#virus").offset().left;
+  if (left > 45)
+  {
+  TweenLite.to("#virus",0.2, {left:"-=35", ease:Power2.easeInOut});
+  }
+
+}
+else{
+
+  var left = $("#virus").offset().left;
+  if (left < 430)
+  {
+  TweenLite.to("#virus", 0.25, {left:"+=35", ease:Power2.easeInOut});
+  }
+}
+}
+
 window.setInterval(function() {
 $('#result').text(collision($('#witblo'), $('#virus')));
 }, 200);
 
 
-
-// AI voor virusbewegingen
-var richtingVirus = Math.floor(Math.random()*4+1);
-if (richtingVirus=1){
+window.setInterval(function(){
+  VirusAI() },200);
 
 
-}
-else if (richtingVirus= 2) {
 
-}
-else if (richtingVirus=3) {
 
-}
-else{
-  
-}
+
+
+
 
 
 
