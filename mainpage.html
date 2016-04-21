@@ -19,7 +19,7 @@
 <h1 id="bodytitel">Blood Invaders</h1>
 
 
-<div id="speelveld" style="background-image: url(achtergrond.jpg);" >
+<div id="speelveld" style="" >
 
 <div id="witblo" >
 <img src="WBC1.gif"  style="max-width:100%;max-height:100%;">
@@ -68,7 +68,9 @@
 <div id ="scoreTrivia">
   <p>Killing your first virus might trigger something!</p>
 </div>
-
+<div id = "specials">
+  <p> testcontent</p>
+</div>
 
 <p>Colliding? <span id="result">false</span>
 
@@ -110,8 +112,8 @@ function collision($div1, $div2) {
 		var left = $("#virus").offset().left;
 		if (left < 430)
 		{
-		TweenLite.to("#virus", 0.25, {left:newVirusWidth, ease:Power2.easeInOut});
-		TweenLite.to("#virus", 0.25, {top:newVirusHeight, ease:Power2.easeInOut});
+		TweenLite.to("#virus", 0, {left:newVirusWidth, ease:Power2.easeInOut});
+		TweenLite.to("#virus", 0, {top:newVirusHeight, ease:Power2.easeInOut});
 		}
 
       totalkills = totalkills +1;
@@ -151,6 +153,10 @@ function collision($div1, $div2) {
 
           $( "#scoreTrivia").append("<b>"+seconden+" seconden</b>");
     }
+
+
+      $( "#specials" ).html( "<h3><b>test</b></h3>" );
+
 
 	   return true;
        }
@@ -298,6 +304,14 @@ TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
 
 }
 
+
+#specials{
+  position: absolute;
+  left: 630px;
+  top: 390px;
+
+}
+
 #scoreTrivia{
     position: absolute;
     left: 930px;
@@ -332,25 +346,27 @@ TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
 
 #but2 {
     left: 200px;
-    top: 540px;
+    top: 570px;
 }
 
 #but3 {
-    top: 440px;
+    top: 470px;
     left: 300px;
 }
 
 #but4 {
-    top: 440px;
+    top: 470px;
     left: 100px;
 }
 
 
 #speelveld {
-    width: 477px;
-    height: 300px;
+    width: 500px;
+    height: 330px;
     background-color: red;
     display: inline-block;
+    background-image: url(achtergrond.jpg);
+    background-size:cover;
 }
 
 #witblo{
@@ -365,7 +381,7 @@ TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
 
 body {
     padding: 30px;
-    background-color: white;
+    background-color: green;
     color: #444;
     font-family: Arial, sans-serif;
 }
