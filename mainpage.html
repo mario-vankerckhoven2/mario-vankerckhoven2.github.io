@@ -21,65 +21,64 @@
 
 <div id="speelveld" style="" >
 
-<div id="witblo" >
-<img src="WBC1.gif"  style="max-width:100%;max-height:100%;">
-</div>
+    <div id="witblo" >
+        <img src="WBC1.gif"  style="max-width:100%;max-height:100%;">
+    </div>
 
-<div id="virus" >
-<img src="virus.gif"  style="max-width:100%;max-height:100%;">
-</div>
+    <div id="virus" >
+        <img src="virus.gif"  style="max-width:100%;max-height:100%;">
+    </div>
 
 </div>
 
 
 <div id= "controldiv">
 
-<button  id ="but1" onclick="WBComhoog()">
-  <img src="pijlboven.png"  style="max-width:100%;max-height:100%;">
-</button>
+  <button  id ="but1" onclick="WBComhoog()">
+      <img src="pijlboven.png"  style="max-width:100%;max-height:100%;">
+  </button>
 
-<button id ="but2" onclick="WBComlaag()">
-<img src="pijlonder.png"  style="max-width:100%;max-height:100%;">
-</button>
+  <button id ="but2" onclick="WBComlaag()">
+      <img src="pijlonder.png"  style="max-width:100%;max-height:100%;">
+  </button>
 
-<button id = "but3" onclick="WBCnaarrechts()">
-<img src="pijlrechts.png"  style="max-width:100%;max-height:100%;">
-</button>
+  <button id = "but3" onclick="WBCnaarrechts()">
+      <img src="pijlrechts.png"  style="max-width:100%;max-height:100%;">
+  </button>
 
-<button id ="but4" onclick="WBCnaarlinks()">
-<img src="pijllinks.png"  style="max-width:100%;max-height:100%;">
-</button>
+  <button id ="but4" onclick="WBCnaarlinks()">
+      <img src="pijllinks.png"  style="max-width:100%;max-height:100%;">
+  </button>
 
 </div>
 
-<div id="DNAgif">
-</div>
+<div id="DNAgif"></div>
+
 <div id ="intro">
-  <p> Welcome to Blood Invaders !</p>
-  <br></br>
-  <p><b>Jou doel :</b></p>
-  <p> Dood het virus door de witte</p>
-  <p> bloedcel het te helpen vinden !</p>
-  <br></br>
-  <p><b>Controls:</b></p>
-  <p> Bestuur de witte bloedcel d.m.v.</p>
-  <p> pijltjestoetsen of de buttons</p>
-  <p> </p>
+    <p> Welcome to Blood Invaders !</p>
+    <br></br>
+    <p><b>Jou doel :</b></p>
+    <p> Dood het virus door de witte</p>
+    <p> bloedcel het te helpen vinden !</p>
+    <br></br>
+    <p><b>Controls:</b></p>
+    <p> Bestuur de witte bloedcel d.m.v.</p>
+    <p> pijltjestoetsen of de buttons</p>
+    <p></p>
 </div>
 
 <div id ="scoreTrivia">
-  <p>Killing your first virus might trigger something!</p>
+    <p>Killing your first virus might trigger something!</p>
 </div>
+
 <div id = "specials">
-  <p> testcontent</p>
+    <p> testcontent</p>
 </div>
 
-<p>Colliding? <span id="result">false</span>
-
+    <p>Colliding? <span id="result">false</span>
 
 </body>
 </html>
-
 
 <script>
 
@@ -89,36 +88,36 @@ var LoginTijd = Date.now();
 
 // autochecker voor collisions tussen virus en witte bloedcel
 function collision($div1, $div2) {
-  var x1 = $div1.offset().left;
-  var y1 = $div1.offset().top;
-  var h1 = $div1.outerHeight(true);
-  var w1 = $div1.outerWidth(true);
-  var b1 = y1 + h1;
-  var r1 = x1 + w1;
-  var x2 = $div2.offset().left;
-  var y2 = $div2.offset().top;
-  var h2 = $div2.outerHeight(true);
-  var w2 = $div2.outerWidth(true);
-  var b2 = y2 + h2;
-  var r2 = x2 + w2;
+    var x1 = $div1.offset().left;
+    var y1 = $div1.offset().top;
+    var h1 = $div1.outerHeight(true);
+    var w1 = $div1.outerWidth(true);
+    var b1 = y1 + h1;
+    var r1 = x1 + w1;
+    var x2 = $div2.offset().left;
+    var y2 = $div2.offset().top;
+    var h2 = $div2.outerHeight(true);
+    var w2 = $div2.outerWidth(true);
+    var b2 = y2 + h2;
+    var r2 = x2 + w2;
 
   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2){
     return false;
   }
   else {
 
-  var newVirusHeight = Math.floor(Math.random() *  270);
-  var newVirusWidth = Math.floor(Math.random()* 420);
+    var newVirusHeight = Math.floor(Math.random() *  270);
+    var newVirusWidth = Math.floor(Math.random()* 420);
 
 
 		var left = $("#virus").offset().left;
 		if (left < 430)
 		{
-		TweenLite.to("#virus", 0, {left:newVirusWidth, ease:Power2.easeInOut});
-		TweenLite.to("#virus", 0, {top:newVirusHeight, ease:Power2.easeInOut});
+		    TweenLite.to("#virus", 0, {left:newVirusWidth, ease:Power2.easeInOut});
+		    TweenLite.to("#virus", 0, {top:newVirusHeight, ease:Power2.easeInOut});
 		}
 
-      totalkills = totalkills +1;
+    totalkills = totalkills +1;
 
     var huidigeTijd = Date.now();
     var speeltijd = (huidigeTijd - LoginTijd);
@@ -129,19 +128,24 @@ function collision($div1, $div2) {
 
     if (totalkills > 9)
     {
-      $( "#scoreTrivia").append("<p id='doubleDigits'> Double Digits!!!!!</p>");
-    }
+        if (totalkills >12)
+        {
+          $( "#scoreTrivia").append("<p id='doubleDigits'> Triple Digits!!!!!</p>");
+        }
+        else
+        {
+          $( "#scoreTrivia").append("<p id='doubleDigits'> Double Digits!!!!!</p>");
+    }}
+
     $( "#scoreTrivia").append("<br></br>");
     $( "#scoreTrivia").append("<b>You have been killing virusses for:</b>");
     $( "#scoreTrivia").append("<br></br>");
 
     if (seconden > 59)  {
         if (seconden > 119)  {
-
             var minuten = Math.floor(seconden / 60);
             seconden = seconden - (minuten*60);
             $( "#scoreTrivia").append("<b>"+minuten+" minuten en "+seconden+" seconden</b>");
-
         }
         else {
 
@@ -149,68 +153,53 @@ function collision($div1, $div2) {
             seconden = seconden - (minuten*60);
             $( "#scoreTrivia").append("<b>"+minuten+" minuut en "+seconden+" seconden</b>");
 
+        }}
+        else {
+            $( "#scoreTrivia").append("<b>"+seconden+" seconden</b>");
         }
-    }
-    else {
-
-          $( "#scoreTrivia").append("<b>"+seconden+" seconden</b>");
-    }
-
-
       $( "#specials" ).html( "<h3><b>test</b></h3>" );
-
-
-	   return true;
+	      return true;
        }
 }
 
 
-
-
-
-
-
 // AI voor virusbewegingen
 function VirusAI() {
-var richtingVirus = Math.floor(Math.random()*5);
+    var richtingVirus = Math.floor(Math.random()*5);
+    if (richtingVirus==1){
+        var top = $("#virus").offset().top;
+        if (top > 60)
+        {
+            TweenLite.to("#virus", 0.2, {top:"-=35", ease:Power2.easeInOut});
+        }}
 
-if (richtingVirus==1){
+    else if (richtingVirus== 2) {
+        var top = $("#virus").offset().top;
+        if (top <265)
+        {
+            TweenLite.to("#virus", 0.2, {top:"+=35", ease:Power2.easeInOut});
+        }}
 
-  var top = $("#virus").offset().top;
-  if (top > 60)
-  {
-  TweenLite.to("#virus", 0.2, {top:"-=35px", ease:Power2.easeInOut});
-  }
+    else if (richtingVirus==3) {
+        var left = $("#virus").offset().left;
+        if (left > 45)
+        {
+            TweenLite.to("#virus",0.2, {left:"-=35", ease:Power2.easeInOut});
+        }}
+    else{
+        var left = $("#virus").offset().left;
+        if (left < 430)
+        {
+            TweenLite.to("#virus", 0.25, {left:"+=35", ease:Power2.easeInOut});
+        }}}
 
-}
-else if (richtingVirus== 2) {
 
-  var top = $("#virus").offset().top;
-  if (top <265)
-  {
-  TweenLite.to("#virus", 0.2, {top:"+=35", ease:Power2.easeInOut});
-  }
 
-}
-else if (richtingVirus==3) {
+// systeem voor informatie uit virus
 
-  var left = $("#virus").offset().left;
-  if (left > 45)
-  {
-  TweenLite.to("#virus",0.2, {left:"-=35", ease:Power2.easeInOut});
-  }
 
-}
-else{
 
-  var left = $("#virus").offset().left;
-  if (left < 430)
-  {
-  TweenLite.to("#virus", 0.25, {left:"+=35", ease:Power2.easeInOut});
-  }
-}
-}
-
+//timers
 window.setInterval(function() {
 $('#result').text(collision($('#witblo'), $('#virus')));
 }, 200);
@@ -222,47 +211,40 @@ window.setInterval(function(){
 
 
 
-
-
-
-
-
-
  // Bewegingscontrollers voor witte bloedcel
 function WBComhoog() {
-var top = $("#witblo").offset().top;
-if (top > 60)
-{
-  TweenLite.to("#witblo", 0.25, {top:"-=35px", ease:Power2.easeInOut});
-}
-}
+    var top = $("#witblo").offset().top;
+    if (top > 60)
+    {
+        TweenLite.to("#witblo", 0.25, {top:"-=35px", ease:Power2.easeInOut});
+    }}
+
 
 function WBComlaag() {
-var top = $("#witblo").offset().top;
-if (top <265)
-{
-TweenLite.to("#witblo", 0.25, {top:"+=35", ease:Power2.easeInOut});
-}
-}
+    var top = $("#witblo").offset().top;
+    if (top <265)
+    {
+        TweenLite.to("#witblo", 0.25, {top:"+=35", ease:Power2.easeInOut});
+    }}
+
 
 function WBCnaarlinks() {
-var left = $("#witblo").offset().left;
-if (left > 45)
-{
-TweenLite.to("#witblo", 0.25, {left:"-=35", ease:Power2.easeInOut});
-}
-}
+    var left = $("#witblo").offset().left;
+    if (left > 45)
+    {
+        TweenLite.to("#witblo", 0.25, {left:"-=35", ease:Power2.easeInOut});
+    }}
 
 function WBCnaarrechts() {
-var left = $("#witblo").offset().left;
-if (left < 430)
-{
-TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
-}
-}
+    var left = $("#witblo").offset().left;
+    if (left < 430)
+    {
+        TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
+    }}
 
- // Arrow keys added for keyboard fans
- $(document).keydown(function(e) {
+
+// Arrow keys added for keyboard fans
+$(document).keyup(function(e) {
     switch(e.which) {
         case 37: // naarlinks
         WBCnaarlinks();
@@ -280,16 +262,19 @@ TweenLite.to("#witblo", 0.25, {left:"+=35", ease:Power2.easeInOut});
         WBComlaag();
         break;
 
-        default: return; // exit this handler for other keys
+        default: return; // exit
     }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
+    e.preventDefault();
+
 });
 </script>
+
+
 <style>
 
 #doubleDigits{
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 40px;
   font-family: Impact;
 }
 
@@ -416,5 +401,4 @@ h1 {
 p {
     margin: 5px 0;
 }
-
 </style>
