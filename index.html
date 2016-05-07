@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Blood Invaders</title>
+  <!--CDN links for jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <!--CDN links for TweenLite, CSSPlugin, and EasePack-->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/plugins/CSSPlugin.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/easing/EasePack.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenLite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TimelineMax.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<!--style = "background-image: url(WBC1.gif);"-->
+<body>
+
+<h1 id="bodytitel">Blood Invaders</h1>
+
+<div id="speelveld" style="" >
+    <div id="witblo" >
+        <img src="WBC1.gif"  style="max-width:100%;max-height:100%;">
+    </div>
+
+    <div id="virus" >
+        <img src="virus.gif"  style="max-width:100%;max-height:100%;">
+    </div>
+</div>
+
+
+<div id= "controldiv">
+  <button  id ="but1" onclick="WBComhoog()">
+      <img src="pijlboven.png"  style="max-width:100%;max-height:100%;">
+  </button>
+
+  <button id ="but2" onclick="WBComlaag()">
+      <img src="pijlonder.png"  style="max-width:100%;max-height:100%;">
+  </button>
+
+  <button id = "but3" onclick="WBCnaarrechts()">
+      <img src="pijlrechts.png"  style="max-width:100%;max-height:100%;">
+  </button>
+
+  <button id ="but4" onclick="WBCnaarlinks()">
+      <img src="pijllinks.png"  style="max-width:100%;max-height:100%;">
+  </button>
+</div>
+
+<div id="DNAgif"></div>
+
+<div id ="intro">
+    <p> Welcome to Blood Invaders !</p>
+    <br></br>
+    <p><b>Jou doel :</b></p>
+    <p> Dood het virus door de witte</p>
+    <p> bloedcel het te helpen vinden !</p>
+    <br></br>
+    <p><b>Controls:</b></p>
+    <p> Bestuur de witte bloedcel d.m.v.</p>
+    <p> pijltjestoetsen of de buttons</p>
+    <p></p>
+</div>
+
+<div id ="scoreTrivia">
+    <p>Killing your first virus might trigger something!</p>
+</div>
+
+<div id = "specials">
+    <p> testcontent</p>
+</div>
+
+  <!-- <p>Colliding? <span id="result">false</span> -->
+
+</body>
+</html>
