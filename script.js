@@ -46,7 +46,7 @@ function collision($div1, $div2) {
 
     if (totalkills > 9)
     {
-        if (totalkills >99)
+        if (totalkills >12)
         {
           $( "#scoreTrivia").append("<p id='doubleDigits'> Triple Digits!!!!!</p>");
         }
@@ -89,6 +89,7 @@ function VirusAI() {
         if (top > 60)
         {
             TweenLite.to("#virus", 0.2, {top:"-=35", ease:Power2.easeInOut});
+
         }}
 
     else if (richtingVirus== 2) {
@@ -96,6 +97,7 @@ function VirusAI() {
         if (top <265)
         {
             TweenLite.to("#virus", 0.2, {top:"+=35", ease:Power2.easeInOut});
+
         }}
 
     else if (richtingVirus==3) {
@@ -103,12 +105,14 @@ function VirusAI() {
         if (left > 45)
         {
             TweenLite.to("#virus",0.2, {left:"-=35", ease:Power2.easeInOut});
+
         }}
     else{
         var left = $("#virus").offset().left;
         if (left < 430)
         {
             TweenLite.to("#virus", 0.25, {left:"+=35", ease:Power2.easeInOut});
+
         }}}
 
 
