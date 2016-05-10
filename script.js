@@ -46,7 +46,7 @@ function collision($div1, $div2) {
 
     if (totalkills > 9)
     {
-        if (totalkills >12)
+        if (totalkills >99)
         {
           $( "#scoreTrivia").append("<p id='doubleDigits'> Triple Digits!!!!!</p>");
         }
@@ -75,7 +75,7 @@ function collision($div1, $div2) {
         else {
             $( "#scoreTrivia").append("<b>"+seconden+" seconden</b>");
         }
-      $( "#specials" ).html( "<h3><b>test</b></h3>" );
+      
 	      return true;
        }
 }

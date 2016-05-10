@@ -10,8 +10,8 @@ De layout bestaat uit:
 1. Het speelveld
     * Het virus
     * De witte bloedcel
+    
 2. Controls
-
     * 4 buttons op de webpagina voor de muis
     * de 4 pijltjestoetsen
 
